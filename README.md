@@ -3,6 +3,7 @@
 A Clojure port of [alizain/ulid](https://github.com/alizain/ulid)
 
 [![Clojars Project](https://img.shields.io/clojars/v/clj-ulid.svg)](https://clojars.org/clj-ulid)
+[![CircleCI](https://circleci.com/gh/theikkila/clj-ulid.svg?style=svg)](https://circleci.com/gh/theikkila/clj-ulid)
 
 ## Background
 
