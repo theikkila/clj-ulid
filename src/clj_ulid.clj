@@ -1,7 +1,6 @@
 (ns clj-ulid
   (:refer-clojure :exclude [rand rand-int rand-nth bytes])
-  (:import [java.security SecureRandom]
-           [org.apache.commons.codec.binary Base64 Base32 Hex]))
+  (:import [java.security SecureRandom]))
 
 (def ^:const ^String BASE32_DEFAULT
   "Base32 Alphabet."
@@ -61,7 +60,10 @@
 
 
 
-(defn- encode [n length]
+(defn encode
+  "Encode integer with Crockford's Base32"
+  {:static true}
+  [n length]
   (->
     (reduce
       (fn [state _]
@@ -70,12 +72,14 @@
               n-next (/ (- n m) encoding-length)]
           {:encoded (str (get value-base32-map m) encoded)
            :n n-next}))
-      {:encoded "" :n n}
+      {:encoded "" :n (max n 0)}
       (range length))
     :encoded))
 
 
-(defn- decode [s]
+(defn decode [s]
+  "Decode string to integer with Crockford's Base32"
+  {:static true}
   (as-> s $
     (reverse $)
     (map (partial get base32-value-map) $)
