@@ -1,4 +1,4 @@
-(defproject clj-ulid "0.1.0-SNAPSHOT"
+(defproject clj-ulid "1.0.0"
   :description "ULID generating library for clojure"
   :url "https://github.com/theikkila/clj-ulid"
   :license {:name "MIT"}
